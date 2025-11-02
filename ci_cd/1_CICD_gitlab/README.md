@@ -156,6 +156,8 @@ deploy:
         - sudo su $projectuser -c "ps -ef | grep $projectname-$version.jar | grep -v grep | awk '{print \$2}' | xargs -r kill -9"
         - sudo su $projectuser -c "cd $projectpath; nohup java -jar $projectname-$version.jar > nohup.out 2>1 &" 
         - echo deploy success
+        - > 
+            if
     tags: 
         - lab-server
     only:
