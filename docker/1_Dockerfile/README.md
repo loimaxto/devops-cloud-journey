@@ -91,7 +91,8 @@ USER shoeshop
 ## 3 Build stage
 
 I meet this error when run " docker build ".
-![[docker_build_error.png]]
+![build docker](./images/docker_build_error.png)
+
 I found out that docker is not able to connect to the internet by stimulating ping to maven server and it failed. So I config "/etc/docker/daemon.json". This config allow Docker to access the internet.
 
 ```json
@@ -102,11 +103,12 @@ I found out that docker is not able to connect to the internet by stimulating pi
 
 After applying config, I start to build it again and it succeed
 
-![[build_docker_image.png]]
 
+![build docker](./images/build_docker_image.png)
 Finally, I ran Docker container from that image: 
-![[docker_container_run.png]]
 
+
+![build docker](./images/docker_container_run.png)
 I met error that cannot connect to website that is hosted. Later I figured out it was because application port didn't map port of container 
 - 8080/tcp:  it provide port(informational) the app uses ( declare in Dockerfile)
 - 0.0.0.0:9999->8082/tcp : **8082/tcp (Container Port)** This is the internal port inside the container where your application is actually listening, as defined by `server.port=8082`( spring boot)
