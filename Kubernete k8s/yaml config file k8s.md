@@ -1,0 +1,15 @@
+
+### Yaml syntax
+
+```yaml
+include_newlines: |
+            exactly as you see
+            will appear these three
+            lines of poetry
+
+fold_newlines: >
+            this is really a
+            single line of text
+            despite appearances
+```
+ 

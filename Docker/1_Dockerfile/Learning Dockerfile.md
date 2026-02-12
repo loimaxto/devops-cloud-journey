@@ -1,13 +1,15 @@
-
+# Dockerfile for Springboot project
 ## 1 Deploy mindset
-- none root user : default is user root
-- base image : optimize image
-- multipe stage : reduce size
 
-Dockerfile note
-1. correct image version for project
-2. image from " official, verified, sponsored
-3. base image - alpine - reduce size
+Checklist
+1. Official Docker Images as base 
+2. Specific image version
+3. Small-sized images
+4. Optimize Caching Image Layers ( put least change command first - longest later)
+5. .dockerignore to excludes files ( .tar, .build)
+6. Multiple stage build
+7. Use the least privileged user
+8. scan security
 
 ## 2 Setup docker
 ### Prepare install script
@@ -35,12 +37,12 @@ docker --version
 docker-compose --version
 
 ```
-### Docker commands
+### Run a docker container
 create container and run background
 ```bash
 docker run --name <container_name> -dp <host_port>:<container_port> <image_name>  
 ```
-### Dockerfile commands
+### Dockerfile
 - FROM : pull image
 - WORDIR: setup working directory
 - COPY
@@ -91,8 +93,7 @@ USER shoeshop
 ## 3 Build stage
 
 I meet this error when run " docker build ".
-![build docker](./images/docker_build_error.png)
-
+!<img src="images/docker_build_error.png">
 I found out that docker is not able to connect to the internet by stimulating ping to maven server and it failed. So I config "/etc/docker/daemon.json". This config allow Docker to access the internet.
 
 ```json
@@ -103,12 +104,11 @@ I found out that docker is not able to connect to the internet by stimulating pi
 
 After applying config, I start to build it again and it succeed
 
+!<img src="images/build_docker_image.png">
 
-![build docker](./images/build_docker_image.png)
 Finally, I ran Docker container from that image: 
+!<img src="images/docker_container_run.png">
 
-
-![build docker](./images/docker_container_run.png)
 I met error that cannot connect to website that is hosted. Later I figured out it was because application port didn't map port of container 
 - 8080/tcp:  it provide port(informational) the app uses ( declare in Dockerfile)
 - 0.0.0.0:9999->8082/tcp : **8082/tcp (Container Port)** This is the internal port inside the container where your application is actually listening, as defined by `server.port=8082`( spring boot)

@@ -1,4 +1,6 @@
-
+#devops
+#cicd
+#test #home #learning
 # CI/CD with Gitlab runner
 This project is used to demonstrate how to establish CI/CD with Gitlab runner.
 
@@ -28,7 +30,7 @@ shutdown_timeout = 0
 [session_server]
   session_timeout = 1800
 
-[[runners]]
+[runners]()
   name = "lab-server"
   url = "https://gitlab.com"
   id = 1234124124
@@ -118,8 +120,8 @@ Each of them include key-word:
 - **stage**: name the stage 
 - **script**: step by step command to run on gitlab-server
 - **tags**: assign gitlab-runner for this pipeline
-- **only**: when the pipeline is execute, in this case once we create new tag( like release verion of project)
-- **variables**: *GIT_STRATEGY* is used indicate that it will clone( default) from gitlap to run for the current stage or keep the previous state then continue to run
+- **only**: when the pipeline is execute, in this case once we create new tag( like release version of project)
+- **variables**: *GIT_STRATEGY* is used indicate how Gitlab will clone( default) code  to run for the current stage or keep the previous state then continue to run
 
 
 **gitlab-ci.yml**
