@@ -1,4 +1,4 @@
-1. Booting usb: https://www.loom.com/share/9eb66d3bce43444eb2e22819461a565f
+1. Booting usb:
 
 Command check arch boot is existed
 ```bash
@@ -50,7 +50,7 @@ fdisk /dev/sda
 **Partion options**
 n - list partitions
 - 1 efi
-- ? Linux filesystem ext4
+- Linux filesystem ext4
 - 44 Linux LVM : allow to encrypt disk
 !!! **Attention**
 ```bash
